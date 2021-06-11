@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background: #42455a;
+}
+
+.animasi {
+    transition: all 0.1s;
+    -webkit-transition:all 0.1s ;
+}
+
+.tombol-aktif {
+    padding: 0px 15px;
+    margin-top: 250px;
+    border-radius: 30px;
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.biru {
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+}
+
+.tombol-aktif:active {
+    transform: translate(100px,52px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
+.menu{
+    display: inline-flex;
+    margin: 50px;
+}
+.menu ul li{
+    list-style: none;
+    height: 20px;
+    margin: 0px 5px;
+    color: #b2b1b1;
+    cursor: pointer;
+    float: left;
+}
+.logo img{
+    width: 90px;
+    margin-top: -20px;
+    margin-right: -10px;
+}
+.active{
+    color: #19dafa !important;
+}
+.banner{
+    width: 80%;
+    height: 70%;
+    top: 25%;
+    left: 130px;
+    position: absolute;
+    color: white;
+}
+.app-text{
+    width: 50%;
+    float: left;
+}
+.app-text h1{
+    font-size: 43px;
+    width: 640px;
+    position: relative;
+    margin-left: 40px;
+}
+.app-text p{
+    width: 650px;
+    font-size: 15px;
+    margin: 30px 0 30px 40px;
+    line-height: 25px;
+    color: #919191;
+}
+.app-video{
+    width: 50%;
+    float: right;
+}
+.app-video video{
+    width: 100%;
+}
+
+#bawah{
+	text-decoration: underline;
+}

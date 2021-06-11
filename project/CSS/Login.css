@@ -1,0 +1,49 @@
+.box{
+    width: 350px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+    align-content: center;
+    margin-top: 150px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 7px 7px 7px rgb(33, 29, 53);
+}
+
+.userpass{
+    border-radius: 30px;
+    margin-top: -20px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+
+.bground{
+    background-color: #42455a;
+}
+
+.loginbutton{
+    margin-top: 50px;
+    width: 70px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #3498DB;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    border: 20px#42455a;
+}
+
+.textlogin{
+    margin-top: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    size: 20px;
+}
+
+.formbox{
+    margin-top: 50px;
+}
+
+.garis{
+    border: 1px solid black;
+}
