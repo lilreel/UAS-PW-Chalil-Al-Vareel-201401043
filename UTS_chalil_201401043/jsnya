@@ -1,0 +1,220 @@
+/*Gambar Jam*/
+
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    // show hour,minute and second
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    // show the whole clock
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("DisplayJamnya").innerText = time;
+    document.getElementById("DisplayJamnya").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
+}
+
+showTime();
+
+
+
+/* TO DO LIST*/
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+
+
+
+
+
+/*Kalender*/
+
+let today = new Date();
+let currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
+let selectYear = document.getElementById("year");
+let selectMonth = document.getElementById("month");
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let monthAndYear = document.getElementById("monthAndYear");
+
+
+showCalendar(currentMonth, currentYear);
+
+function next() {
+    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+    currentMonth = (currentMonth + 1) % 12;
+    showCalendar(currentMonth, currentYear);
+}
+function previous() {
+    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+    showCalendar(currentMonth, currentYear);
+}
+function jump() {
+    currentYear = parseInt(selectYear.value);
+    currentMonth = parseInt(selectMonth.value);
+    showCalendar(currentMonth, currentYear);
+}
+function showCalendar(month, year) {
+    let firstDay = (new Date(year, month)).getDay();
+    let daysInMonth = 32 - new Date(year, month, 32).getDate();
+    let tbl = document.getElementById("calendar-body"); // body dari calendar
+
+    // membersihkan kotak sebelumya
+    tbl.innerHTML = "";
+
+    // mengisi nilai bulan dan tahun menggunakan DOM (Document Object Model).
+    monthAndYear.innerHTML = months[month] + " " + year;
+    selectYear.value = year;
+    selectMonth.value = month;
+
+    // membuat kalender
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+        // membuat kotak untuk tanggal
+        let row = document.createElement("tr");
+        //membuat kotak untuk diisi dengan.
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay || date > daysInMonth) /*jika tanggal belum sesuai harinya, tabel kosong*/ {
+                let cell = document.createElement("td");
+                let cellText = document.createTextNode("");
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+            }
+            else {
+                let cell = document.createElement("td");
+                let cellText = document.createTextNode(date);
+                
+                if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+                    cell.classList.add("bg-info");
+                } // warna hari ini
+
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+                date++;
+            }
+        }
+        tbl.appendChild(row); // munculkan tanggal dalam sel
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  GAJADI
+// function to calculate local time
+// in a different city
+// given the city's UTC offset
+function calcTime(city, offset) {
+
+    // create Date object for current location
+    d = new Date();
+   
+    // convert to msec
+    // add local time zone offset
+    // get UTC time in msec
+    utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+   
+    // create new Date object for different city
+    // using supplied offset
+    nd = new Date(utc + (3600000*offset));
+   
+    // return time as a string
+    return "The local time in " + city + " is " + nd.toLocaleString();
+
+}
+
+// get Bombay time
+alert(calcTime('Bombay', '+5.5'));
+
+// get Singapore time
+alert(calcTime('Singapore', '+8'));
+
+// get London time
+alert(calcTime('London', '+1'));
+*/

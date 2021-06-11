@@ -1,0 +1,136 @@
+body {
+    background: black;
+}
+
+h3{
+  font-family: orbitron;
+  color: white;
+  size: 100px;
+  margin-bottom: 3;
+}
+
+#titlenya{
+    margin:2%;
+    padding:2%;
+    text-align : center;
+    color: white;
+    font-family: Orbitron;
+    letter-spacing: 3px;
+}
+
+/*JAM*/
+
+.jamnya {
+    text-align: center;
+    color: #17D4FE;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+}
+
+/*TO DO LIST*/
+
+/* Hapus margins dan padding dari list */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Style untuk list */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  font-family: 'comic sans ms';
+}
+
+/* warna pada list no. urut ganjil */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/*warna bg list Hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/*berubah warna dan tulisan diberi garis saat diklik */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* menampilkan tanda centang saat di klik */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style untuk close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style untuk header */
+.header {
+  background-color: #17D4FE;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* membersohkan float setelah header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style untuk input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style untuk "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
